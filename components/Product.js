@@ -71,11 +71,11 @@ function Product(props) {
 
   const handleNewOrder = async (e) => {
     setMessage(<form onSubmit={checkout}>
-    <label for="first">Full name:</label>
+    <label>Full name:</label>
     <div><input className="border mb-1 border-black w-2/9 font-bold" type="text" required id="first" name="first" /></div>
-    <div><label for="address">Address:</label></div>
+    <div><label>Address:</label></div>
     <input className="border mb-1 border-black w-2/9 font-bold" type="text" required id="address" name="address" />
-    <div><label for="email">Email:</label></div>
+    <div><label>Email:</label></div>
     <input className="border mb-1 border-black w-2/9 font-bold" type="Email" required id="email" name="email" />
     <div><button className="border p-1 mb-1 border-black w-2/9 shadow-offset-black font-bold rounded bg-yellow-200 hover:bg-yellow-50"  type="submit">Checkout</button></div>
   </form>);
