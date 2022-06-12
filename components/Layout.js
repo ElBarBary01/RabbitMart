@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import UserIcon from "./ui/user";
 import { useRouter } from "next/router";
 function Layout({ children }) {
   const [session, setSession] = useState(false);
