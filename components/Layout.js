@@ -25,8 +25,7 @@ function Layout({ children }) {
             <Link href="/"><a><img src="https://www.rabbitmart.com/wp-content/uploads/2021/11/Asset-4.png"style={{height: '3em', objectFit:'contain'}} width={130} alt="" /></a></Link>
             </div>
             <div className="flex items-center justify-end w-full lg:w-2/5 lg:justify-around"> 
-             <a href="/search"><button className="border p-1 mb-1 border-black w-2/9 shadow-offset-black font-bold rounded-full bg-yellow-300 hover:bg-yellow-200" >search</button></a>
-              
+             <Link href="/search"><a><button className="border p-1 mb-1 border-black w-2/9 shadow-offset-black font-bold rounded-full bg-yellow-300 hover:bg-yellow-200" >search</button></a></Link>              
              
             </div>
           </div>
