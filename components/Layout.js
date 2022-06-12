@@ -1,18 +1,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import UserIcon from "./ui/user";
-import ShoppingCartIcon from "./ui/shoppingcart";
-import FavoriteIcon from "./ui/favorite";
 import { useRouter } from "next/router";
 function Layout({ children }) {
   const [session, setSession] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
-  const handleMenu = () => setMenuOpen(!menuOpen);
-  const handleOpen = () => setCartOpen(!cartOpen);
-  const [haveProducts, setHaveProducts] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
-
   const router = useRouter();
   return (
     
