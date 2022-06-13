@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import * as axios from 'axios';
-import { useRouter } from "next/router";
+
 
 function Product(props) {
   const [message, setMessage] = useState('');
@@ -42,27 +42,13 @@ function Product(props) {
   }
 
   const checkout= async (event) => {
-    const userInfo ={fullName: event.target.first.value, address: event.target.address.value, email: event.target.email.value};
-    order(userInfo.address,product,userInfo.fullName,userInfo.email)
-    await fetch("https://payment-elbarbary01.vercel.app/create-checkout-session", {
-      method: "POST",
-      headers: {"Access-Control-Allow-Headers" : "Content-Type",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({"name": name, "price": price, "userInfo": userInfo }),
-      
-       
-    })
+    const userInfo ={fullName: event.target.first.value, address: event.target.address.value, email: event.target.email.value};  
+  axios.post("https://payment-ecru.vercel.app/create-checkout-session", {name,price})
+
       .then(res => {
-        if (res.ok) {   
-        return res.json()}
-        return res.json().then(json => Promise.reject(json))
-      })
-      .then(({ url }) => {
-        
-        window.location = url
+        console.log(res);
+        const {data} = res;
+        window.location = data?.url;
       })
       .catch(e => {
         console.error(e.error)
@@ -73,9 +59,9 @@ function Product(props) {
     setMessage(<form onSubmit={checkout}>
     <label>Full name:</label>
     <div><input className="border mb-1 border-black w-2/9 font-bold" type="text" required id="first" name="first" /></div>
-    <div><label>Address:</label></div>
+    <div><label >Address:</label></div>
     <input className="border mb-1 border-black w-2/9 font-bold" type="text" required id="address" name="address" />
-    <div><label>Email:</label></div>
+    <div><label >Email:</label></div>
     <input className="border mb-1 border-black w-2/9 font-bold" type="Email" required id="email" name="email" />
     <div><button className="border p-1 mb-1 border-black w-2/9 shadow-offset-black font-bold rounded bg-yellow-200 hover:bg-yellow-50"  type="submit">Checkout</button></div>
   </form>);
@@ -97,12 +83,14 @@ function Product(props) {
             ${price}
           </span>
           <div className="mt-12 flex flex-row justify-between ">
+            {stock === 0 ? <>Out of stock</> :
             <button
               className="border p-2 mb-8 border-black shadow-offset-lime w-2/3 font-bold"
               onClick={(e) => handleNewOrder(e)}
             >
               Buy
             </button>
+            }
             
           </div>
           
