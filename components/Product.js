@@ -49,6 +49,7 @@ function Product(props) {
         console.log(res);
         const {data} = res;
         window.location = data?.url;
+        order(userInfo.address,product,userInfo.fullName,userInfo.email)
       })
       .catch(e => {
         console.error(e.error)
